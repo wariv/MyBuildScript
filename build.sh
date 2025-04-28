@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "--== Executing build script ==--\n\n"
+printf '--== Executing build script ==--\n\n'
 
 #mod .bashrc
 echo "rm ~/.bash_history" >> ~/.bashrc
@@ -18,6 +18,10 @@ mkdir log
 #Update apt
 printf "     Do apt update..."
 sudo apt update >> log/apt.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Do apt update...\n" || printf "\r[\e[31mFAIL\e[0m] Do apt update...\n"
+
+#Install libpcap
+printf "     Install libpcap..."
+apt install libpcap-dev >> log/libpcap.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install libpcap...\n" || printf "\r[\e[31mFAIL\e[0m] Install libpcap...\n"
 
 #Install make
 printf "     Install make..."
@@ -62,7 +66,7 @@ chmod +x pp64.bin >> ../../log/princeprocessor.log 2>> ../../log/error.log
 printf "       - moving..."
 sudo cp pp64.bin /usr/bin >> ../../log/princeprocessor.log 2>> ../../log/error.log && printf "\r  - [\e[32mOK\e[0m] moving...\n" || printf "\r  - [\e[31mFAIL\e[0m] moving...\n"
 cd ../../
-rm -rf princeprocessor >> ../../log/princeprocessor.log 2>> ../../log/error.log
+rm -rf princeprocessor >> log/princeprocessor.log 2>> log/error.log
 
 
 #Install TomNomNom tools
@@ -114,17 +118,19 @@ go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest >> log/
 printf "     Install ffuf..."
 go install github.com/ffuf/ffuf/v2@latest >> log/ffuf.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install ffuf...\n" || printf "\r[\e[31mFAIL\e[0m] Install ffuf...\n"
 printf "     Get ffufrc..."
+mkdir ~/.config/ffuf
 curl -k -o ~/.config/ffuf/ffufrc https://raw.githubusercontent.com/wariv/MyBuildScript/refs/heads/main/ffufrc >> log/ffuf.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Get ffufrc...\n" || printf "\r[\e[31mFAIL\e[0m] Get ffufrc...\n"
 
 
 #Install MassDNS
 printf "     Clone massdns..."
+cd ~/build
 git clone https://github.com/blechschmidt/massdns.git >> log/massdns.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Clone massdns...\n" || printf "\r[\e[31mFAIL\e[0m] Clone massdns...\n"
 cd massdns
 printf "       -  building..."
 make >> ../log/massdns.log 2>> ../log/error.log && printf "\r  - [\e[32mOK\e[0m] building...\n" || printf "\r  - [\e[31mFAIL\e[0m] building...\n"
 printf "       -  installing..."
-sudo make Install >> ../log/massdns.log 2>> ../log/error.log && printf "\r  - [\e[32mOK\e[0m] installing...\n" || printf "\r  - [\e[31mFAIL\e[0m] installing...\n"
+sudo make Install >> ~/build/log/massdns.log 2>> ~/build/log/error.log && printf "\r  - [\e[32mOK\e[0m] installing...\n" || printf "\r  - [\e[31mFAIL\e[0m] installing...\n"
 cd ../
 rm -rf massdns >> ../log/massdns.log 2>> ../log/error.log
 
