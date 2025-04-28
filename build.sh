@@ -37,8 +37,8 @@ printf "     Set pipx path..."
 pipx ensurepath >> log/pipx.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Set pipx path...\n" || printf "\r[\e[31mFAIL\e[0m] Set pipx path...\n"
 
 #Install git
-printf "     Install git..." >> log/git.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install git...\n" || printf "\r[\e[31mFAIL\e[0m] Install git...\n"
-sudo apt install git -y
+printf "     Install git..." 
+sudo apt install git -y >> log/git.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install git...\n" || printf "\r[\e[31mFAIL\e[0m] Install git...\n"
 
 #Install Curl
 printf "     Install curl..."
@@ -57,25 +57,30 @@ printf "     Clone Prince Processor..."
 git clone https://github.com/hashcat/princeprocessor.git  >> log/princeprocessor.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Clone Prince Processor...\n" || printf "\r[\e[31mFAIL\e[0m] Clone Prince Processor...\n"
 cd princeprocessor/src
 printf "       - building..."
-sudo make >> log/princeprocessor.log 2>> log/error.log && printf "\r  - [\e[32mOK\e[0m] building...\n" || printf "\r  - [\e[31mFAIL\e[0m] building...\n"
-chmod +x pp64.bin >> log/princeprocessor.log 2>> log/error.log
+sudo make >> ../../log/princeprocessor.log 2>> ../../log/error.log && printf "\r  - [\e[32mOK\e[0m] building...\n" || printf "\r  - [\e[31mFAIL\e[0m] building...\n"
+chmod +x pp64.bin >> ../../log/princeprocessor.log 2>> ../../log/error.log
 printf "       - moving..."
-sudo cp pp64.bin /usr/bin >> log/princeprocessor.log 2>> log/error.log && printf "\r  - [\e[32mOK\e[0m] moving...\n" || printf "\r  - [\e[31mFAIL\e[0m] moving...\n"
+sudo cp pp64.bin /usr/bin >> ../../log/princeprocessor.log 2>> ../../log/error.log && printf "\r  - [\e[32mOK\e[0m] moving...\n" || printf "\r  - [\e[31mFAIL\e[0m] moving...\n"
 cd ../../
-rm -rf princeprocessor >> log/princeprocessor.log 2>> log/error.log
+rm -rf princeprocessor >> ../../log/princeprocessor.log 2>> ../../log/error.log
 
 
 #Install TomNomNom tools
 printf "     Install gf..."
 go install github.com/tomnomnom/gf@latest >> log/gf.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install gf...\n" || printf "\r[\e[31mFAIL\e[0m] Install gf...\n"
+
 printf "     Install waybackurls..."
 go install github.com/tomnomnom/waybackurls@latest >> log/waybackurls.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install waybackurls...\n" || printf "\r[\e[31mFAIL\e[0m] Install waybackurls...\n"
+
 printf "     Install anew..."
 go install github.com/tomnomnom/anew@latest >> log/anew.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install anew...\n" || printf "\r[\e[31mFAIL\e[0m] Install anew...\n"
+
 printf "     Install unfurl..."
 go install github.com/tomnomnom/unfurl@latest >> log/unfurl.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install unfurl...\n" || printf "\r[\e[31mFAIL\e[0m] Install unfurl...\n"
+
 printf "     Install qsreplace..."
 go install github.com/tomnomnom/qsreplace@latest >> log/qsreplace.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install qsreplace...\n" || printf "\r[\e[31mFAIL\e[0m] Install qsreplace...\n"
+
 
 #Install Hakrevdns
 printf "     Install hakrevdns..."
@@ -117,11 +122,11 @@ printf "     Clone massdns..."
 git clone https://github.com/blechschmidt/massdns.git >> log/massdns.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Clone massdns...\n" || printf "\r[\e[31mFAIL\e[0m] Clone massdns...\n"
 cd massdns
 printf "       -  building..."
-make >> log/massdns.log 2>> log/error.log && printf "\r  - [\e[32mOK\e[0m] building...\n" || printf "\r  - [\e[31mFAIL\e[0m] building...\n"
+make >> ../log/massdns.log 2>> ../log/error.log && printf "\r  - [\e[32mOK\e[0m] building...\n" || printf "\r  - [\e[31mFAIL\e[0m] building...\n"
 printf "       -  installing..."
-sudo make Install >> log/massdns.log 2>> log/error.log && printf "\r  - [\e[32mOK\e[0m] installing...\n" || printf "\r  - [\e[31mFAIL\e[0m] installing...\n"
+sudo make Install >> ../log/massdns.log 2>> ../log/error.log && printf "\r  - [\e[32mOK\e[0m] installing...\n" || printf "\r  - [\e[31mFAIL\e[0m] installing...\n"
 cd ../
-rm -rf MassDNS >> log/massdns.log 2>> log/error.log
+rm -rf massdns >> ../log/massdns.log 2>> ../log/error.log
 
 #Install PureDNS
 printf "     Install puredns..."
