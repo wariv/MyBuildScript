@@ -94,9 +94,13 @@ go install github.com/hakluke/hakrevdns@latest >> log/hakrevdns.log 2>> log/erro
 printf "     Install httpx..."
 go install github.com/projectdiscovery/httpx/cmd/httpx@latest >> log/httpx.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install httpx...\n" || printf "\r[\e[31mFAIL\e[0m] Install httpx...\n"
 
+sleep 5
+
 #Install Nuculei
 printf "     Install nuculei..."
 go install github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest >> log/nuculei.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install nuculei...\n" || printf "\r[\e[31mFAIL\e[0m] Install nuculei...\n"
+
+sleep 5
 
 #Install Naabu
 printf "     Install naabu..."
@@ -125,13 +129,13 @@ curl -k -o ~/.config/ffuf/ffufrc https://raw.githubusercontent.com/wariv/MyBuild
 #Install MassDNS
 printf "     Clone massdns..."
 git clone https://github.com/blechschmidt/massdns.git >> log/massdns.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Clone massdns...\n" || printf "\r[\e[31mFAIL\e[0m] Clone massdns...\n"
-cd massdns
+cd massdns/src
 printf "       -  building..."
-make >> ../log/massdns.log 2>> ../log/error.log && printf "\r  - [\e[32mOK\e[0m] building...\n" || printf "\r  - [\e[31mFAIL\e[0m] building...\n"
+make >> ~/build/log/massdns.log 2>> ~/build/log/error.log && printf "\r  - [\e[32mOK\e[0m] building...\n" || printf "\r  - [\e[31mFAIL\e[0m] building...\n"
 printf "       -  installing..."
-sudo make Install >> ../log/massdns.log 2>> ../log/error.log && printf "\r  - [\e[32mOK\e[0m] installing...\n" || printf "\r  - [\e[31mFAIL\e[0m] installing...\n"
-cd ../
-rm -rf massdns >> log/massdns.log 2>> log/error.log
+sudo make Install >> ~/build/log/massdns.log 2>> ~/build/log/error.log && printf "\r  - [\e[32mOK\e[0m] installing...\n" || printf "\r  - [\e[31mFAIL\e[0m] installing...\n"
+cd ../../
+rm -rf massdns >> ~/buildlog/massdns.log 2>> ~/buildlog/error.log
 
 #Install PureDNS
 printf "     Install puredns..."
@@ -146,7 +150,7 @@ pipx install git+https://github.com/xnl-h4ck3r/waymore.git >> log/waymore.log 2>
 
 #Install Arjun
 printf "     Install arjun..."
-pipx install arjun >> log/ffuf.log 2>> log/arjun.log && printf "\r[\e[32mOK\e[0m] Install arjun...\n" || printf "\r[\e[31mFAIL\e[0m] Install arjun...\n"
+pipx install arjun >> log/arjun.log 2>> log/arjun.log && printf "\r[\e[32mOK\e[0m] Install arjun...\n" || printf "\r[\e[31mFAIL\e[0m] Install arjun...\n"
 
 #Install Ghauri
 printf "     Install ghauri..."
@@ -174,15 +178,15 @@ ln -s ~/SecLists/Discovery/Web-Content/api/actions-lowercase.txt api-actions.txt
 ln -s ~/SecLists/Discovery/Web-Content/api/actions-endpoints.txt api-endpoints.txt
 ln -s ~/SecLists/Discovery/Web-Content/api/objects-lowercase.txt api-objects.txt
 cat ~/SecLists/Discovery/Web-Content/burp-parameter-names.txt | anew parameters.txt
-cat ~/SecLists/Discovery/Web-Content/url-params_from-top-55-most-popular-apps.txt | anew parameters.txt
-head -n 5000 ~/SecLists/Discovery/Web-Content/raft-small-words-lowercase.txt | anew words-small.txt
-head -n 5000 ~/SecLists/Discovery/DNS/n0kovo_subdomains.txt | anew subdomains.txt
-head -n 5000 ~/SecLists/Discovery/DNS/deepmagic.com-prefixes-top50000.txt | anew subdomains.txt
-head -n 5000 ~/SecLists/Discovery/DNS/shubs-subdomains.txt | anew subdomains.txt
-head -n 5000 ~/SecLists/Discovery/DNS/fierce-hostlist.txt | anew subdomains.txt
-head -n 5000 ~/SecLists/Discovery/DNS/bug-bounty-program-subdomains-trickest-inventory.txt | anew subdomains.txt
-head -n 5000 ~/SecLists/Discovery/DNS/subdomains-top1million-5000.txt | anew subdomains.txt
-head -n 5000 ~/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt | anew subdomains.txt
+cat ~/SecLists/Discovery/Web-Content/url-params_from-top-55-most-popular-apps.txt | anew parameters.txt > /dev/null 2>&1
+head -n 5000 ~/SecLists/Discovery/Web-Content/raft-small-words-lowercase.txt | anew words-small.txt > /dev/null 2>&1
+head -n 5000 ~/SecLists/Discovery/DNS/n0kovo_subdomains.txt | anew subdomains.txt > /dev/null 2>&1
+head -n 5000 ~/SecLists/Discovery/DNS/deepmagic.com-prefixes-top50000.txt | anew subdomains.txt > /dev/null 2>&1
+head -n 5000 ~/SecLists/Discovery/DNS/shubs-subdomains.txt | anew subdomains.txt > /dev/null 2>&1
+head -n 5000 ~/SecLists/Discovery/DNS/fierce-hostlist.txt | anew subdomains.txt > /dev/null 2>&1
+head -n 5000 ~/SecLists/Discovery/DNS/bug-bounty-program-subdomains-trickest-inventory.txt | anew subdomains.txt > /dev/null 2>&1
+head -n 5000 ~/SecLists/Discovery/DNS/subdomains-top1million-5000.txt | anew subdomains.txt > /dev/null 2>&1
+head -n 5000 ~/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt | anew subdomains.txt > /dev/null 2>&1
 ln -s ~/SecLists/Fuzzing/3-digits-000-999.txt fuzz-nums3.txt
 ln -s ~/SecLists/Fuzzing/4-digits-0000-9999.txt fuzz-nums4.txt
 ln -s ~/SecLists/Fuzzing/5-digits-00000-99999.txt fuzz-nums5.txt
