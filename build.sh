@@ -21,7 +21,7 @@ sudo apt update >> log/apt.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Do
 
 #Install libpcap
 printf "     Install libpcap..."
-apt install libpcap-dev >> log/libpcap.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install libpcap...\n" || printf "\r[\e[31mFAIL\e[0m] Install libpcap...\n"
+apt-get install libpcap-dev >> log/libpcap.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install libpcap...\n" || printf "\r[\e[31mFAIL\e[0m] Install libpcap...\n"
 
 #Install make
 printf "     Install make..."
@@ -29,32 +29,32 @@ sudo apt-get install make >> log/make.log 2>> log/error.log && printf "\r[\e[32m
 
 #Install Go
 printf "     Install Golang..."
-sudo apt install golang -y >> log/golang.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install Golang...\n" || printf "\r[\e[31mFAIL\e[0m] Install Golang...\n"
+sudo apt-get install golang -y >> log/golang.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install Golang...\n" || printf "\r[\e[31mFAIL\e[0m] Install Golang...\n"
 printf "     Set golang path..."
 export PATH=$PATH:~/go/bin >> log/golang.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Set golang path...\n" || printf "\r[\e[31mFAIL\e[0m] Set golang path...\n"
 
 
 #Install pipx
 printf "     Install pipx..."
-sudo apt install pipx -y >> log/pipx.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install pipx...\n" || printf "\r[\e[31mFAIL\e[0m] Install pipx...\n"
+sudo apt-get install pipx -y >> log/pipx.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install pipx...\n" || printf "\r[\e[31mFAIL\e[0m] Install pipx...\n"
 printf "     Set pipx path..."
 pipx ensurepath >> log/pipx.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Set pipx path...\n" || printf "\r[\e[31mFAIL\e[0m] Set pipx path...\n"
 
 #Install git
 printf "     Install git..." 
-sudo apt install git -y >> log/git.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install git...\n" || printf "\r[\e[31mFAIL\e[0m] Install git...\n"
+sudo apt-get install git -y >> log/git.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install git...\n" || printf "\r[\e[31mFAIL\e[0m] Install git...\n"
 
 #Install Curl
 printf "     Install curl..."
-sudo apt install curl -y >> log/curl.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install curl...\n" || printf "\r[\e[31mFAIL\e[0m] Install curl...\n"
+sudo apt-get install curl -y >> log/curl.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install curl...\n" || printf "\r[\e[31mFAIL\e[0m] Install curl...\n"
 
 #Install Gedit
 printf "     Install gedit..."
-sudo apt install gedit -y >> log/gedit.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install gedit...\n" || printf "\r[\e[31mFAIL\e[0m] Install gedit...\n"
+sudo apt-get install gedit -y >> log/gedit.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install gedit...\n" || printf "\r[\e[31mFAIL\e[0m] Install gedit...\n"
 
 #Install prips
 printf "     Install prips..."
-sudo apt install prips -y >> log/prips.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install prips...\n" || printf "\r[\e[31mFAIL\e[0m] Install prips...\n"
+sudo apt-get install prips -y >> log/prips.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install prips...\n" || printf "\r[\e[31mFAIL\e[0m] Install prips...\n"
 
 #Install Prince Processor
 printf "     Clone Prince Processor..."
@@ -104,7 +104,7 @@ go install github.com/projectdiscovery/naabu/v2/cmd/naabu@latest >> log/naabu.lo
 
 #Install nmap
 printf "     Install nmap..."
-sudo apt install nmap -y >> log/nmap.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install nmap...\n" || printf "\r[\e[31mFAIL\e[0m] Install nmap...\n"
+sudo apt-get install nmap -y >> log/nmap.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install nmap...\n" || printf "\r[\e[31mFAIL\e[0m] Install nmap...\n"
 
 #Install Katana
 printf "     Install katana..."
@@ -124,15 +124,14 @@ curl -k -o ~/.config/ffuf/ffufrc https://raw.githubusercontent.com/wariv/MyBuild
 
 #Install MassDNS
 printf "     Clone massdns..."
-cd ~/build
 git clone https://github.com/blechschmidt/massdns.git >> log/massdns.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Clone massdns...\n" || printf "\r[\e[31mFAIL\e[0m] Clone massdns...\n"
 cd massdns
 printf "       -  building..."
 make >> ../log/massdns.log 2>> ../log/error.log && printf "\r  - [\e[32mOK\e[0m] building...\n" || printf "\r  - [\e[31mFAIL\e[0m] building...\n"
 printf "       -  installing..."
-sudo make Install >> ~/build/log/massdns.log 2>> ~/build/log/error.log && printf "\r  - [\e[32mOK\e[0m] installing...\n" || printf "\r  - [\e[31mFAIL\e[0m] installing...\n"
+sudo make Install >> ../log/massdns.log 2>> ../log/error.log && printf "\r  - [\e[32mOK\e[0m] installing...\n" || printf "\r  - [\e[31mFAIL\e[0m] installing...\n"
 cd ../
-rm -rf massdns >> ../log/massdns.log 2>> ../log/error.log
+rm -rf massdns >> log/massdns.log 2>> log/error.log
 
 #Install PureDNS
 printf "     Install puredns..."
@@ -164,9 +163,9 @@ chmod +x crt.sh >> log/crt.sh.log 2>> log/error.log
 sudo mv crt.sh /usr/bin >> log/crt.sh.log 2>> log/error.log
 
 #Install seclists and personalize
-printf "     Install Seclists (This coudl take some time)..."
+printf "     Install Seclists (This could take some time)..."
 cd ~
-git clone https://github.com/danielmiessler/SecLists.git >> log/seclists.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install seclists...\n" || printf "\r[\e[31mFAIL\e[0m] Install seclists...\n"
+git clone https://github.com/danielmiessler/SecLists.git >> build/log/seclists.log 2>> build/log/error.log && printf "\r[\e[32mOK\e[0m] Install seclists...\n" || printf "\r[\e[31mFAIL\e[0m] Install seclists...\n"
 cd ~/list
 ln -s ~/SecLists/Discovery/Web-Content/raft-medium-words-lowercase.txt words-med.txt
 ln -s ~/SecLists/Discovery/Web-Content/raft-medium-files-lowercase.txt files-med.txt
