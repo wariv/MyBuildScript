@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf '--== Executing build script ==--\n\n'
+echo '--== Executing build script ==--'
 
 #mod .bashrc
 echo "rm ~/.bash_history" >> ~/.bashrc
@@ -21,11 +21,11 @@ sudo apt update >> log/apt.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Do
 
 #Install libpcap
 printf "     Install libpcap..."
-apt-get install libpcap-dev >> log/libpcap.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install libpcap...\n" || printf "\r[\e[31mFAIL\e[0m] Install libpcap...\n"
+apt-get install libpcap-dev -y >> log/libpcap.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install libpcap...\n" || printf "\r[\e[31mFAIL\e[0m] Install libpcap...\n"
 
 #Install make
 printf "     Install make..."
-sudo apt-get install make >> log/make.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install make...\n" || printf "\r[\e[31mFAIL\e[0m] Install make...\n"
+sudo apt-get install make -y >> log/make.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install make...\n" || printf "\r[\e[31mFAIL\e[0m] Install make...\n"
 
 #Install Go
 printf "     Install Golang..."
