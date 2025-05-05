@@ -19,6 +19,10 @@ mkdir log
 printf "     Do apt update..."
 sudo apt update >> log/apt.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Do apt update...\n" || printf "\r[\e[31mFAIL\e[0m] Do apt update...\n"
 
+#Install whois
+printf "     Install whois..."
+sudo apt install whois -y >> log/whois.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install whois...\n" || printf "\r[\e[31mFAIL\e[0m] Install whois...\n"
+
 #Install libpcap
 printf "     Install libpcap..."
 apt-get install libpcap-dev -y >> log/libpcap.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install libpcap...\n" || printf "\r[\e[31mFAIL\e[0m] Install libpcap...\n"
@@ -98,13 +102,15 @@ printf "     Install httpx..."
 go install github.com/projectdiscovery/httpx/cmd/httpx@latest >> log/httpx.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install httpx...\n" || printf "\r[\e[31mFAIL\e[0m] Install httpx...\n"
 
 rm -rf /tmp/*
-sleep 5
 
 #Install Nuculei
 printf "     Install nuculei..."
 go install github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest >> log/nuculei.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install nuculei...\n" || printf "\r[\e[31mFAIL\e[0m] Install nuculei...\n"
 
-sleep 5
+#Install mapcidr
+printf "     Install nuculei..."
+go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest >> log/mapcidr.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install mapcidr...\n" || printf "\r[\e[31mFAIL\e[0m] Install mapcid...\n"
+
 
 #Install Naabu
 printf "     Install naabu..."
@@ -130,6 +136,11 @@ go install github.com/ffuf/ffuf/v2@latest >> log/ffuf.log 2>> log/error.log && p
 printf "     Get ffufrc..."
 mkdir ~/.config/ffuf
 curl -k -o ~/.config/ffuf/ffufrc https://raw.githubusercontent.com/wariv/MyBuildScript/refs/heads/main/ffufrc >> log/ffuf.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Get ffufrc...\n" || printf "\r[\e[31mFAIL\e[0m] Get ffufrc...\n"
+
+#Install dnsx
+printf "     Install subfinder..."
+go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest >> log/dnsx.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install dnsx...\n" || printf "\r[\e[31mFAIL\e[0m] Install dnsx...\n"
+
 
 
 #Install MassDNS
