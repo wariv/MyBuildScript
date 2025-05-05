@@ -32,6 +32,8 @@ printf "     Install Golang..."
 sudo apt-get install golang -y >> log/golang.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install Golang...\n" || printf "\r[\e[31mFAIL\e[0m] Install Golang...\n"
 printf "     Set golang path..."
 export PATH=$PATH:~/go/bin >> log/golang.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Set golang path...\n" || printf "\r[\e[31mFAIL\e[0m] Set golang path...\n"
+mkdir ~/deleteme
+export GOCACHE=~/deleteme/
 printf "\n\nexport PATH=$PATH:~/go/bin \nclear" >> ~/.bashrc
 
 #Install pipx
