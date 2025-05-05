@@ -85,6 +85,7 @@ go install github.com/tomnomnom/unfurl@latest >> log/unfurl.log 2>> log/error.lo
 printf "     Install qsreplace..."
 go install github.com/tomnomnom/qsreplace@latest >> log/qsreplace.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install qsreplace...\n" || printf "\r[\e[31mFAIL\e[0m] Install qsreplace...\n"
 
+rm -rf /tmp/*
 
 #Install Hakrevdns
 printf "     Install hakrevdns..."
@@ -94,6 +95,7 @@ go install github.com/hakluke/hakrevdns@latest >> log/hakrevdns.log 2>> log/erro
 printf "     Install httpx..."
 go install github.com/projectdiscovery/httpx/cmd/httpx@latest >> log/httpx.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install httpx...\n" || printf "\r[\e[31mFAIL\e[0m] Install httpx...\n"
 
+rm -rf /tmp/*
 sleep 5
 
 #Install Nuculei
@@ -113,6 +115,8 @@ sudo apt-get install nmap -y >> log/nmap.log 2>> log/error.log && printf "\r[\e[
 #Install Katana
 printf "     Install katana..."
 CGO_ENABLED=1 go install github.com/projectdiscovery/katana/cmd/katana@latest >> log/katana.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install katana...\n" || printf "\r[\e[31mFAIL\e[0m] Install katana...\n"
+
+rm -rf /tmp/*
 
 #Install SubFinder
 printf "     Install subfinder..."
