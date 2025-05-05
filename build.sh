@@ -135,12 +135,12 @@ curl -k -o ~/.config/ffuf/ffufrc https://raw.githubusercontent.com/wariv/MyBuild
 #Install MassDNS
 printf "     Clone massdns..."
 git clone https://github.com/blechschmidt/massdns.git >> log/massdns.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Clone massdns...\n" || printf "\r[\e[31mFAIL\e[0m] Clone massdns...\n"
-cd massdns/src
+cd massdns
 printf "       -  building..."
 make >> ~/build/log/massdns.log 2>> ~/build/log/error.log && printf "\r  - [\e[32mOK\e[0m] building...\n" || printf "\r  - [\e[31mFAIL\e[0m] building...\n"
 printf "       -  installing..."
-sudo make Install >> ~/build/log/massdns.log 2>> ~/build/log/error.log && printf "\r  - [\e[32mOK\e[0m] installing...\n" || printf "\r  - [\e[31mFAIL\e[0m] installing...\n"
-cd ../../
+cp ./bin/massdns /usr/bin >> ~/build/log/massdns.log 2>> ~/build/log/error.log && printf "\r  - [\e[32mOK\e[0m] installing...\n" || printf "\r  - [\e[31mFAIL\e[0m] installing...\n"
+cd ../
 rm -rf massdns >> ~/buildlog/massdns.log 2>> ~/buildlog/error.log
 
 #Install PureDNS
