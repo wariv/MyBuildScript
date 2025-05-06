@@ -23,6 +23,10 @@ sudo apt update >> log/apt.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Do
 printf "     Install whois..."
 sudo apt install whois -y >> log/whois.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install whois...\n" || printf "\r[\e[31mFAIL\e[0m] Install whois...\n"
 
+#Install pip
+printf "     Install pip..."
+sudo apt install pip -y >> log/pip.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install pip...\n" || printf "\r[\e[31mFAIL\e[0m] Install pip...\n"
+
 #Install libpcap
 printf "     Install libpcap..."
 apt-get install libpcap-dev -y >> log/libpcap.log 2>> log/error.log && printf "\r[\e[32mOK\e[0m] Install libpcap...\n" || printf "\r[\e[31mFAIL\e[0m] Install libpcap...\n"
