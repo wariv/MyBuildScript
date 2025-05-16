@@ -194,7 +194,7 @@ git clone https://github.com/danielmiessler/SecLists.git >> build/log/seclists.l
 cd ~/list
 ln -s ~/SecLists/Discovery/Web-Content/raft-medium-words-lowercase.txt words-med.txt
 ln -s ~/SecLists/Discovery/Web-Content/raft-medium-files-lowercase.txt files-med.txt
-ln -s ~/SecLists/Discovery/Web-Content/raft-medium-dirs-lowercase.txt dirs-med.txt
+ln -s ~/SecLists/Discovery/Web-Content/raft-medium-directories-lowercase.txt dirs-med.txt
 ln -s ~/SecLists/Discovery/Web-Content/api/actions-lowercase.txt api-actions.txt
 ln -s ~/SecLists/Discovery/Web-Content/api/actions-endpoints.txt api-endpoints.txt
 ln -s ~/SecLists/Discovery/Web-Content/api/objects-lowercase.txt api-objects.txt
